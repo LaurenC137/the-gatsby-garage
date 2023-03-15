@@ -8,7 +8,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `The Gatsby Garage`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `http://gatsby-garage.local`,
   },
   plugins: [
     {
@@ -26,6 +26,13 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: process.env.WPGRAPHQL_URL,
+        type: {
+          MediaItem: {
+            localFile: {
+              requestConcurrency: 50,
+            },
+          },
+        },
       },
     },
     {
